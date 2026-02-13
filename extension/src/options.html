@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Bookmarks - Configuration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .info-box {
+      background: #f0f4ff;
+      border-left: 4px solid #667eea;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .info-box a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .info-box a:hover {
+      text-decoration: underline;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .btn-secondary:hover {
+      background: #f0f4ff;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      padding: 12px 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .message.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AI Bookmarks Configuration</h1>
+    <p class="subtitle">Configure your self-hosted Cloudflare Worker service</p>
+
+    <div class="info-box">
+      <strong>Note:</strong> This is an open-source project. You need to deploy your own Cloudflare Worker service.
+      Please refer to the <a href="https://github.com/yourusername/ai-bookmarks" target="_blank">deployment documentation</a> for instructions.
+    </div>
+
+    <form id="configForm">
+      <div class="form-group">
+        <label for="workerUrl">Worker URL *</label>
+        <input
+          type="text"
+          id="workerUrl"
+          name="workerUrl"
+          placeholder="https://your-worker.your-subdomain.workers.dev"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="apiKey">API Key *</label>
+        <input
+          type="password"
+          id="apiKey"
+          name="apiKey"
+          placeholder="Enter your API key"
+          required
+        >
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="btn-primary">Save Configuration</button>
+        <button type="button" id="testBtn" class="btn-secondary">Test Connection</button>
+      </div>
+    </form>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
